@@ -1,26 +1,16 @@
 import Link from 'next/link';
 import { Box, Image, Text } from '@chakra-ui/react';
 
-const MovieCard: React.FC<any> = ({ movie }) => {
+export const MovieCard: React.FC<any> = ({ movie }) => {
   return (
-    <Link href={`/movies/${movie.id}`} passHref>
-      <Box bg="white" shadow="sm" rounded="md" cursor="pointer">
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          width={700}
-          height={800}
-          className="rounded-t-md"
-          alt={movie.title}
-        />
-        <Box px={6} py={2}>
-          <Text fontWeight="bold" fontSize="xl" mb={1}>
-            {movie.title}
-          </Text>
-          <Text color="gray.700" fontSize="base" mb={1}>
-            {movie.release_date}
-          </Text>
-        </Box>
-      </Box>
+  <Link href={`/movie/${movie.id}`} passHref>
+      <div className="bg-white shadow-sm rounded-md cursor-pointer">
+        <Image src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width={400} height={300} className="rounded-t-md" alt={movie.title} />
+        <div className="px-6 py-1">
+          <div className="font-bold text-xl mb-1">{movie.title}</div>
+          <p className="text-gray-700 text-base mb-1">{movie.release_date}</p>
+        </div>
+      </div>
     </Link>
   );
 };

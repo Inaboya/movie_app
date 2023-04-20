@@ -1,3 +1,2 @@
-export const rapidAPIKEY = 'abc836969fmshc4860ea5a8b53bap1ae96bjsnb2a8ff99f568';
-export const rapidHost = 'movie-database-alternative.p.rapidapi.com';
-export const rapidURL = 'https://movie-database-alternative.p.rapidapi.com/';
+export const server = 'https://api.themoviedb.org/3/movie';
+export const apiKey = 'e72746f4bc6f4fcc1e297dd6c58b0634'

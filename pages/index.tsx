@@ -1,31 +1,28 @@
-import { Box } from '@chakra-ui/react';
 import axios from 'axios';
-import { rapidAPIKEY, rapidHost, rapidURL } from '@/config';
+import { Movies } from '@/components/Movies';
+import { apiKey } from '@/config';
 
-export default function Home({ data }) {
+export default function Home({ data }: any) {
   return (
     <>
-      <Box p={4} bg="gray.700" color="white" w="100%" h="100vh">
+      <div className="bg-gray-700">
         <Movies movies={data} />
-      </Box>
+      </div>
     </>
   );
 }
 
-async function getStaticProps() {
-  try {
-    const { data } = await axios.get(rapidURL, {
-      headers: {
-        'x-rapidapi-key': rapidAPIKEY,
-        'x-rapidapi-host': rapidHost,
-      },
-    });
-    return {
-      props: {
-        data,
-      },
-    };
-  } catch (error) {
-    console.log(error);
-  }
+// "https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1"
+export async function getStaticProps() {
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`,
+  );
+
+  const data = res.data.results;
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
