@@ -2,8 +2,7 @@ import axios from 'axios';
 import { Movies } from '@/components/Movies';
 import { apiKey } from '@/config';
 import SearchBar from '@/components/SearchBar';
-import { useEffect, useState } from 'react';
-import { Navbar } from '@/components/Navbar';
+import { useEffect } from 'react';
 import { Layout } from '@/components/Layout';
 import { Box } from '@chakra-ui/react';
 
