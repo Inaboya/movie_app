@@ -30,8 +30,6 @@ export default function MovieTitles({ title }: any) {
   );
 }
 
-// https://api.themoviedb.org/3/search/movie?api_key=###&query=the+avengers
-
 export async function getStaticProps({ params }: any) {
   const title = params.title;
 

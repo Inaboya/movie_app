@@ -7,25 +7,36 @@ import { toast } from 'react-toastify';
 export default function MovieDetails({ movie }: any) {
   const bookmarkMovies = () => {
     if (typeof window !== 'undefined') {
-      const movies = [JSON.parse(localStorage.getItem('watched') as string)];
+      const movies = JSON.parse(localStorage.getItem('watched') as string);
+      console.log(movies, 'wetin be movies');
 
       if (movies) {
         const isExist = movies.find((el: any) => el.id === movie.id);
+
+        console.log(isExist, 'wetin be isExist')
 
         if (isExist) {
           toast.error('Movie already bookmarked', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
           });
-          alert('Movie already bookmarked')
+          alert('Movie already bookmarked');
         } else {
-          localStorage.setItem('watched', JSON.stringify([...movies, movie]));
+          movies.push(movie);
+          localStorage.setItem('watched', JSON.stringify(movies));
           toast.success('Movie bookmarked', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
           });
-          alert('Movie bookmarked')
+          alert('Movie bookmarked');
         }
+      } else {
+        localStorage.setItem('watched', JSON.stringify([movie]));
+        toast.success('Movie bookmarked', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+        alert('Movie bookmarked');
       }
     }
   };
