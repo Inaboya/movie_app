@@ -1,7 +1,6 @@
 import { MovieCard } from '@/components/MovieCard';
-import { Movies } from '@/components/Movies';
-import SearchBar from '@/components/SearchBar';
 import React, { useEffect, useState } from 'react';
+import { Box, Container, Grid, Heading } from '@chakra-ui/react';
 
 const BookmarkMovies = () => {
   const [data, setData] = useState<any>([]);
@@ -11,20 +10,30 @@ const BookmarkMovies = () => {
 
   // console.log({ data })
   const movies = data;
-  console.log(movies);
   return (
-    <div className="bg-gray-700 container max-w-7xl mx-auto pb-10 px-4">
-      <h1 className="text-white text-2xl mt-8 mb-5">What's Popular</h1>
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {/* {data ?  movies.map((movie:any) => (<MovieCard movie={movie} key={movie.id} />): (<h1 className="text-white text-2xl mt-8 mb-5">No Movies</h1>)} */}
+    <Box bg="gray.700" pb={10} px={4} maxW="7xl" mx="auto">
+      <Heading color="white" fontSize="2xl" mt={8} mb={5}>
+        What's Popular
+      </Heading>
+      <Grid
+        gap={4}
+        templateColumns={{
+          sm: 'repeat(2, 1fr)',
+          md: 'repeat(3, 1fr)',
+          lg: 'repeat(5, 1fr)',
+        }}
+      >
+        {/* {data ?  movies.map((movie:any) => (<MovieCard movie={movie} key={movie.id} />): (<Heading color="white" fontSize="2xl" mt={8} mb={5}>No Movies</Heading>)} */}
 
         {data ? (
           movies.map((movie: any) => <MovieCard movie={movie} key={movie.id} />)
         ) : (
-          <h1 className="text-white text-2xl mt-8 mb-5">No Movies</h1>
+          <Heading color="white" fontSize="2xl" mt={8} mb={5}>
+            No Movies
+          </Heading>
         )}
-      </div>
-    </div>
+      </Grid>
+    </Box>
   );
 };
 

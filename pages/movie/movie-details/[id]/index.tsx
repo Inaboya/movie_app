@@ -1,14 +1,17 @@
 import axios from 'axios';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Meta } from '@/components/Meta';
+import { Box, Container, Heading, Text, Button, Image } from "@chakra-ui/react";
 import { apiKey } from '@/config';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure(); // Toastify config
+
 
 export default function MovieDetails({ movie }: any) {
   const bookmarkMovies = () => {
     if (typeof window !== 'undefined') {
       const movies = JSON.parse(localStorage.getItem('watched') as string);
-      console.log(movies, 'wetin be movies');
 
       if (movies) {
         const isExist = movies.find((el: any) => el.id === movie.id);
@@ -20,7 +23,6 @@ export default function MovieDetails({ movie }: any) {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
           });
-          alert('Movie already bookmarked');
         } else {
           movies.push(movie);
           localStorage.setItem('watched', JSON.stringify(movies));
@@ -28,7 +30,6 @@ export default function MovieDetails({ movie }: any) {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
           });
-          alert('Movie bookmarked');
         }
       } else {
         localStorage.setItem('watched', JSON.stringify([movie]));
@@ -36,40 +37,53 @@ export default function MovieDetails({ movie }: any) {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 2000,
         });
-        alert('Movie bookmarked');
       }
     }
   };
-  return (
-    <div className="container max-w-4xl mx-auto pt-6">
+ return (
+    <Box maxW="4xl" mx="auto" pt="6">
       <Meta title={movie.title} />
-      <div className="px-3">
+      <Box px="3">
         <Image
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-          width={1000}
-          height={600}
-          className="rounded-md"
+          w={1000}
+          h={600}
+          borderRadius="md"
           alt={movie.title}
         />
-        <h1 className="font-bold text-xl my-2">{movie.title}</h1>
-        <p className="text-gray-600 text-sm mt-4">{movie.overview}</p>
-        <p className="mt-5 text-gray-600 text-sm">
+        <Heading fontWeight="bold" fontSize="xl" mt="2">
+          {movie.title}
+        </Heading>
+        <Text color="gray.600" fontSize="sm" mt="4">
+          {movie.overview}
+        </Text>
+        <Text color="gray.600" fontSize="sm" mt="5">
           Genres:{' '}
-          <span className="font-bold">
+          <Text as="span" fontWeight="bold">
             {movie.genres.map((genre: any) => genre.name).join(', ')}
-          </span>
-        </p>
-        <p className="text-gray-600 text-sm">
-          Release Date: <span className="font-bold">{movie.release_date}</span>
-        </p>
-        <button
-          className="d-flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          </Text>
+        </Text>
+        <Text color="gray.600" fontSize="sm">
+          Release Date:{' '}
+          <Text as="span" fontWeight="bold">
+            {movie.release_date}
+          </Text>
+        </Text>
+        <Button
+          mt="5"
+          bg="blue.500"
+          _hover={{ bg: "blue.600" }}
+          color="white"
+          fontWeight="bold"
+          py="2"
+          px="4"
+          borderRadius="md"
           onClick={bookmarkMovies}
         >
           Save as Watched
-        </button>
-      </div>
-    </div>
+        </Button>
+      </Box>
+    </Box>
   );
 }
 

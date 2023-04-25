@@ -1,6 +1,6 @@
 import { MovieCard } from '@/components/MovieCard';
 import { useEffect, useState } from 'react';
-import { Movies } from '@/components/Movies';
+import { Box, Container, Heading, Grid } from "@chakra-ui/react";
 
 export default function MovieTitles({ title }: any) {
   const [data, setData] = useState<any>([]);
@@ -21,12 +21,25 @@ export default function MovieTitles({ title }: any) {
   }, [data, title]);
 
   return (
-    <div className="bg-gray-700 container max-w-7xl mx-auto pb-10 px-4">
-      <h1 className="text-white text-2xl mt-8 mb-5">What's Popular</h1>
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {movie.map((movie:any) => <MovieCard movie={movie} key={movie.id} />)}
-      </div>
-    </div>
+    <Box bg="gray.700" pb="10" px="4">
+      <Container maxW="7xl" mx="auto" mt="8" mb="5">
+        <Heading color="white" fontSize="2xl">
+          What's Popular
+        </Heading>
+      </Container>
+      <Grid
+        gap="4"
+        templateColumns={{
+          sm: 'repeat(2, 1fr)',
+          md: 'repeat(3, 1fr)',
+          lg: 'repeat(5, 1fr)',
+        }}
+      >
+        {movie.map((movie: any) => (
+          <MovieCard movie={movie} key={movie.id} />
+        ))}
+      </Grid>
+    </Box>
   );
 }
 

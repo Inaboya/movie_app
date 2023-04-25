@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link'; // Import Link from Next.js
+import { Box, Button, Input } from "@chakra-ui/react";
+// import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const [title, setTitle] = useState('');
@@ -11,19 +13,33 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="pt-4 flex items-center justify-center">
-      <input
-        className="border border-gray-300 rounded-md py-2 px-4 w-full sm:max-w-xs"
-        type="text"
-        placeholder="Search for movies..."
-        onChange={handleChange}
-        value={title}
-      />
+    <Box pt={4} display="flex" alignItems="center" justifyContent="center">
+  <Input
+    borderWidth="1px"
+    borderColor="gray.300"
+    borderRadius="md"
+    py={2}
+    px={4}
+    w="full"
+    maxW="xs"
+    type="text"
+    placeholder="Search for movies..."
+    onChange={handleChange}
+    value={title}
+  />
 
-      <div className="bg-blue-500 text-white font-bold ml-2 py-2 px-4 rounded-md">
-        <Link href={`/movie/movie-title/${title}`}>Search</Link>
-      </div>
-    </div>
+  <Button
+    bg="blue.500"
+    color="white"
+    fontWeight="bold"
+    ml={2}
+    py={2}
+    px={4}
+    borderRadius="md"
+  >
+    <Link href={`/movie/movie-title/${title}`}>Search</Link>
+  </Button>
+</Box>
   );
 };
 
