@@ -37,7 +37,7 @@ const SearchBar = () => {
     px={4}
     borderRadius="md"
   >
-    <Link href={`/movie/movie-title/${title}`}>Search</Link>
+    <Link href={`/movie/movie-title/${title}`} passHref>Search</Link>
   </Button>
 </Box>
   );
