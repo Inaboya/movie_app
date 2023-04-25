@@ -22,6 +22,12 @@ export const Navbar: React.FC = () => {
             </Box>
           </ChakraLink>
         </NextLink>
+
+        <NextLink href="/movie/bookmark" passHref>
+          <ChakraLink ml={8} fontSize={{ base: 'base', md: '2xl' }}>
+            Watched
+          </ChakraLink>
+        </NextLink>
       </Box>
     </Box>
   );

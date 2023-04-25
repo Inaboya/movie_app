@@ -2,8 +2,33 @@ import axios from 'axios';
 import Image from 'next/image';
 import { Meta } from '@/components/Meta';
 import { apiKey } from '@/config';
+import { toast } from 'react-toastify';
 
 export default function MovieDetails({ movie }: any) {
+  const bookmarkMovies = () => {
+    if (typeof window !== 'undefined') {
+      const movies = [JSON.parse(localStorage.getItem('watched') as string)];
+
+      if (movies) {
+        const isExist = movies.find((el: any) => el.id === movie.id);
+
+        if (isExist) {
+          toast.error('Movie already bookmarked', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+          });
+          alert('Movie already bookmarked')
+        } else {
+          localStorage.setItem('watched', JSON.stringify([...movies, movie]));
+          toast.success('Movie bookmarked', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+          });
+          alert('Movie bookmarked')
+        }
+      }
+    }
+  };
   return (
     <div className="container max-w-4xl mx-auto pt-6">
       <Meta title={movie.title} />
@@ -26,6 +51,12 @@ export default function MovieDetails({ movie }: any) {
         <p className="text-gray-600 text-sm">
           Release Date: <span className="font-bold">{movie.release_date}</span>
         </p>
+        <button
+          className="d-flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          onClick={bookmarkMovies}
+        >
+          Save as Watched
+        </button>
       </div>
     </div>
   );

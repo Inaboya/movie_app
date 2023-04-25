@@ -6,9 +6,7 @@ export const Layout: React.FC<any> = ({ children }) => {
   return (
     <>
       <Meta />
-      <Navbar />
       <main>{children}</main>
-      <Footer />
     </>
   );
 };

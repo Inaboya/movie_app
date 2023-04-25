@@ -1,13 +1,25 @@
 import axios from 'axios';
 import { Movies } from '@/components/Movies';
 import { apiKey } from '@/config';
+import SearchBar from '@/components/SearchBar';
+import { useEffect, useState } from 'react';
+import { Navbar } from '@/components/Navbar';
+import { Layout } from '@/components/Layout';
 
 export default function Home({ data }: any) {
+  useEffect(() => {
+    localStorage.setItem('movies', JSON.stringify(data));
+  }, []);
+
   return (
     <>
-      <div className="bg-gray-700">
-        <Movies movies={data} />
-      </div>
+      <Layout>
+        <Navbar />
+        <div className="bg-gray-700">
+          <SearchBar />
+          <Movies movies={data} />
+        </div>
+      </Layout>
     </>
   );
 }
