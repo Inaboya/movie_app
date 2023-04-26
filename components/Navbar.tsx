@@ -14,14 +14,16 @@ export const Navbar: React.FC = () => {
         letterSpacing="widest"
         fontFamily="neue"
       >
-        <NextLink href="/" passHref>
-          <ChakraLink fontSize={{ base: 'base', md: '2xl' }}>
-            Watch
-            <Box as="span" color="red.600">
-              Me
-            </Box>
-          </ChakraLink>
-        </NextLink>
+       <Box
+          color="red.600"
+          mt={{ base: 5, md: 0 }}
+          mx={3}
+          fontSize={{ base: 'base', md: '2xl' }}
+        >
+          <NextLink href="/movie/bookmark" passHref>
+            Bookmarks
+          </NextLink>
+        </Box>
 
         
       </Box>

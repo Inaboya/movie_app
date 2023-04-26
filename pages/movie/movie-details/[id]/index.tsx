@@ -1,12 +1,10 @@
 import axios from 'axios';
-// import Image from 'next/image';
-import { Meta } from '@/components/Meta';
-import { Box, Container, Heading, Text, Button, Image } from "@chakra-ui/react";
+import { Box, Container, Heading, Text, Button, Image, Link as ChakraLink } from '@chakra-ui/react';
 import { apiKey } from '@/config';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NextLink from 'next/link';
 toast.configure(); // Toastify config
-
 
 export default function MovieDetails({ movie }: any) {
   const bookmarkMovies = () => {
@@ -16,7 +14,7 @@ export default function MovieDetails({ movie }: any) {
       if (movies) {
         const isExist = movies.find((el: any) => el.id === movie.id);
 
-        console.log(isExist, 'wetin be isExist')
+        console.log(isExist, 'wetin be isExist');
 
         if (isExist) {
           toast.error('Movie already bookmarked', {
@@ -40,10 +38,21 @@ export default function MovieDetails({ movie }: any) {
       }
     }
   };
- return (
+  return (
     <Box maxW="4xl" mx="auto" pt="6">
-      <Meta title={movie.title} />
       <Box px="3">
+        
+        <Box
+          color="gray.600"
+          mt={{ base: 5, md: 0 }}
+          mx={3}
+          fontSize={{ base: 'base', md: '2xl' }}
+        >
+          <NextLink href="/" passHref>
+            Back
+          </NextLink>
+        </Box>
+
         <Image
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
           w={1000}
@@ -72,7 +81,7 @@ export default function MovieDetails({ movie }: any) {
         <Button
           mt="5"
           bg="blue.500"
-          _hover={{ bg: "blue.600" }}
+          _hover={{ bg: 'blue.600' }}
           color="white"
           fontWeight="bold"
           py="2"

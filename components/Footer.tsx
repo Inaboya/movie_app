@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
       justifyContent="center"
     >
       <Text fontSize="xl" color="gray.800">
-        &copy; Copyright 2022{' '}
+        &copy; Copyright 2023{' '}
         <Box as="span" fontWeight="bold">
-          Canddev
+          David Momoh
         </Box>
       </Text>
     </Center>

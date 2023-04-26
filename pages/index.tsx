@@ -5,6 +5,7 @@ import SearchBar from '@/components/SearchBar';
 import { useEffect } from 'react';
 import { Layout } from '@/components/Layout';
 import { Box } from '@chakra-ui/react';
+import { Navbar } from '@/components/Navbar';
 
 export default function Home({ data }: any) {
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function Home({ data }: any) {
     <>
       <Layout>
         <Box bg="gray.700" w="full" h="full">
+          <Navbar />
           <SearchBar />
           <Movies movies={data} />
         </Box>
