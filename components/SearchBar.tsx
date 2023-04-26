@@ -28,19 +28,19 @@ const SearchBar = () => {
         value={title}
       />
 
-      <Box
-        bg="blue.500"
-        color="white"
-        fontWeight="bold"
-        ml={2}
-        py={2}
-        px={4}
-        borderRadius="md"
-      >
-        <Link href={`/movie/movie-title/${title}`} passHref>
+      <Link href={`/movie/movie-title/${title}`} passHref>
+        <Box
+          bg="blue.500"
+          color="white"
+          fontWeight="bold"
+          ml={2}
+          py={2}
+          px={4}
+          borderRadius="md"
+        >
           Search
-        </Link>
-      </Box>
+        </Box>
+      </Link>
     </Box>
   );
 };
