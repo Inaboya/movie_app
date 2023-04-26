@@ -28,7 +28,7 @@ const SearchBar = () => {
         value={title}
       />
 
-      <Button
+      <Box
         bg="blue.500"
         color="white"
         fontWeight="bold"
@@ -40,7 +40,7 @@ const SearchBar = () => {
         <Link href={`/movie/movie-title/${title}`} passHref>
           Search
         </Link>
-      </Button>
+      </Box>
     </Box>
   );
 };

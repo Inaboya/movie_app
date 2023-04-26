@@ -14,14 +14,14 @@ export const Navbar: React.FC = () => {
         letterSpacing="widest"
         fontFamily="neue"
       >
-       <Box
+         <Box
           color="red.600"
           mt={{ base: 5, md: 0 }}
           mx={3}
           fontSize={{ base: 'base', md: '2xl' }}
         >
-          <NextLink href="/movie/bookmark" passHref>
-            Bookmarks
+          <NextLink href="/" passHref>
+            Movies App
           </NextLink>
         </Box>
 
