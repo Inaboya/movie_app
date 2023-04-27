@@ -1,6 +1,6 @@
 import { MovieCard } from '@/components/MovieCard';
 import { useEffect, useState } from 'react';
-import { Box, Container, Heading, Grid } from "@chakra-ui/react";
+import { Box, Container, Heading, Grid } from '@chakra-ui/react';
 
 export default function MovieTitles({ title }: any) {
   const [data, setData] = useState<any>([]);
@@ -43,6 +43,8 @@ export default function MovieTitles({ title }: any) {
   );
 }
 
+let titled: any = [];
+
 export async function getStaticProps({ params }: any) {
   const title = params.title;
 
@@ -54,7 +56,7 @@ export async function getStaticProps({ params }: any) {
 }
 
 export async function getStaticPaths() {
-  const paths: any[] = [];
+  const paths = titled.map((title: string) => ({ params: { title } }));
 
   return {
     paths,
