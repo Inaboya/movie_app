@@ -1,6 +1,7 @@
 import { MovieCard } from '@/components/MovieCard';
 import { useEffect, useState } from 'react';
 import { Box, Container, Heading, Grid } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 export default function MovieTitles({ title }: any) {
   const [data, setData] = useState<any>([]);
@@ -22,6 +23,16 @@ export default function MovieTitles({ title }: any) {
 
   return (
     <Box bg="gray.700" pb="10" px="4">
+      <Box
+        color="white"
+        mt={{ base: 5, md: 0 }}
+        mx={3}
+        fontSize={{ base: 'base', md: '2xl' }}
+      >
+        <NextLink href="/" passHref>
+          Back
+        </NextLink>
+      </Box>
       <Container maxW="7xl" mx="auto" mt="8" mb="5">
         <Heading color="white" fontSize="2xl">
           What's Popular
