@@ -13,7 +13,7 @@ const BookmarkMovies = () => {
   return (
     <Box bg="gray.700" pb={10} px={4} maxW="7xl" mx="auto">
       <Heading color="white" fontSize="2xl" mt={8} mb={5}>
-        What's Popular na
+        What's Popular
       </Heading>
       <Grid
         gap={4}
