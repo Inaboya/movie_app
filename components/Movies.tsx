@@ -17,7 +17,7 @@ export const Movies: React.FC<any> = ({ movies }) => {
     <Box bg="gray.700" maxW="7xl" mx="auto" pb={10} px={4}>
       <Flex alignItems="center" justify="center" mt={8} mb={5}>
         <Heading color="white" fontSize={{ base: '2xl', md: '2xl' }} mr={3}>
-          What's Popular
+          What's Popular na
         </Heading>
 
         <Box
